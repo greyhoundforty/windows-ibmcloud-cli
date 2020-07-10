@@ -31,5 +31,5 @@ variable "domain" {
 variable "datacenter" {
   description = "Datacenter where instance will be deployed."
   type        = string
-  default     = ""
+  default     = "wdc07"
 }
