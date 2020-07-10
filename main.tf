@@ -1,3 +1,7 @@
+resource "random_id" "winpass" {
+  byte_length = 16
+}
+
 resource "ibm_compute_vm_instance" "win2019_devnode" {
   hostname             = "windev-rt"
   domain               = var.domain
@@ -9,5 +13,5 @@ resource "ibm_compute_vm_instance" "win2019_devnode" {
   local_disk           = true
   flavor_key_name      = var.flavor
   tags                 = [var.datacenter, "ryantiffany"]
-  user_metadata        = file("windows-install.yml")
+  user_metadata        = templatefile("${path.module}/windows-install.yml", { password = random_id.winpass.hex })
 }
