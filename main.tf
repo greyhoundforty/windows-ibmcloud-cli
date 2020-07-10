@@ -9,5 +9,5 @@ resource "ibm_compute_vm_instance" "win2019_devnode" {
   local_disk           = true
   flavor_key_name      = var.flavor
   tags                 = [var.datacenter, "ryantiffany"]
-  user_metadata        = file("windows-install.yml")
+#   user_metadata        = file("windows-install.yml")
 }
